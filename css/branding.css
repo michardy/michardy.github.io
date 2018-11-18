@@ -30,11 +30,16 @@
 	--button: var(--mid-light);
 	--button-text: var(--light);
 	--button-major: var(--emphasis);
-	--button-major-text: var(--light);
+	--button-major-text: var(--dark);
 	--button-minor: var(--mid-light);
-	--button-minor-text: var(--dark);
+	--button-minor-text: var(--light);
+}
+
+@font-face{
+	font-family: 'nimbusmono-bold';
+	src: 'font/nimbusmono-bold-webfont.woff';
 }
 
 header h1 {
-	font-family: monospace;
+	font-family: 'nimbusmono-bold-webfont.woff', monospace;
 }
