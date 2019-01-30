@@ -1,11 +1,14 @@
+<!-- Copyright (c) 2018 Michael Hardy -->
 <!DOCTYPE html>
 <html lang="en-US">
 	<head>
 		<meta charset="utf-8"/>
-		<meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0" />
+		<meta id="meta" name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<!--Fixes a wierd bug in the chrome dev tools-->
+		<meta name="viewport" content="width=device-width"/>
 		<link rel="stylesheet" href="css/branding.css"/>
-		<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/michardy/grid-ui@2/css/grid_window.css">
-		<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/michardy/grid-ui@2/css/basic.css">
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/michardy/grid-ui@5/css/grid_window.css">
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/michardy/grid-ui@5/css/basic.css">
 		<!--Please wait while I sacrafice a newborn goat to IE/Edge. (Edit: It still does not work)-->
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 		<!--All hail Facebook glory be their name.-->
@@ -44,75 +47,111 @@
 		<meta name="author" content="Michael Hardy">
 		<meta name="description" content="My resume and projects"/>
 	</head>
-	<body class="article-page">
+	<body class="cardview-page">
+		<div class="card subtle-card popover" id="popover"></div>
 		<header>
 			<h1><a href="/">Michael Hardy</a></h1>
-			<a class="navbar" href="https://github.com/michardy">GitHub</a>&nbsp;
-			<a class="navbar" href="https://www.linkedin.com/in/michael-hardy-b6143a168/">LinkedIn</a>&nbsp;
+			<a class="navbar cartographer-bridge" href="https://github.com/michardy">GitHub</a>&nbsp;
+			<a class="navbar cartographer-bridge" href="https://www.linkedin.com/in/michael-hardy-b6143a168/">LinkedIn</a>&nbsp;
+			<a class="navbar" href="resume.html">Resume</a>&nbsp;
+			<a class="navbar cartographer-feedback" href="https://cartographer.michaelbh.com/contact/Z0FBQUFBQmNVVjlITEtKTWFKLU1za0ExT2Z0bEdxQ1ZOT2hGMUlJd0dzQ3hoUFItNXh6NG81RXFITjNlZ29FZk5fYkJLaXF2U2dzZEwtRGZMSXo5elFjMzFCNFRyeFNQTmsxWFg1Rm5kMnpTQUJIVS1xVDQ5ZjA9">Contact</a>&nbsp;
+			<a class="navbar" href="privacy.html">Privacy Policy</a>&nbsp;
 		</header>
-		<main>
-			<article id="skills">
-				<h2>Skills &amp; Abilities</h2>
-				<ul>
-					<li>Languages: Python (7 years of experience), Rust, C/C++, HTML, JavaScript, and CSS</li>
-					<li>Tools: Git, Visual Studio, Travis CI, Appveyor, Elasticsearch</li>
-					<li>Systems: Windows, Linux (Debian, Ubuntu, and Arch)</li>
-				</ul>
-			</article>
-			<article id="experience">
-				<h2>Experience</h2>
-				<h3>School Technology Assistant | Summer 2015-Summer 2016</h3>
-				<ul>
-					<li>Helped design and facilitate one-week training for new students on using Windows and Google Apps.</li>
-					<li>Helped school transition to from Microsoft Exchange to Google Apps.</li>
-					<li>Helped maintain Windows laptops by identifying and troubleshooting broken computers.</li>
-					<li>Was on call as tech support for teachers and students.</li>
-				</ul>
-				<h3>Technical Writing | EDGI | Summer 2017</h3>
-				<ul>
-					<li>Contributed to Environmental Data Governance Initiative projects remotely with GitHub.</li>
-					<li>Tested installation documentation for various EDGI projects and helped update it.</li>
-				</ul>
-				<h3>Engineering Intern | 8x8 | Summer 2018</h3>
-				<ul>
-					<li>Helped analytics department set up and transition to new database system.</li>
-					<li>Built database management and benchmarking tools.</li>
-				</ul>
-			</article>
-			<article id="projects">
-				<h2>Projects </h2>
-				<a href="https://michardy.github.io/account-hijacking-prevention/"><h3>Capstone project in web security | Winter 2015-Summer 2016</h3></a>
-				<ul>
-					<li>Wrote software for capstone project that detects attempts to commandeer accounts on websites using user behavior to provide continuous authentication.</li>
-					<li>Gained better understanding of how to build asynchronous systems in Python through the project</li>
-				</ul>
-				<h3>Computer Vision Experiments | Spring 2015-Summer 2016</h3>
-				<ul>
-					<li>Utilized dead reckoning to build a robot that can sense and map the location of obstacles.</li>
-					<li>Trained robot to triangulate its location using a camera and QR codes.</li>
-				</ul>
-				<h3>Auto Configuration Software | Spring 2016</h3>
-				<ul>
-					<li>Designed software for Technology Assistants to expedite setup of school laptops.</li>
-				</ul>
-				<a href="https://github.com/michardy/note-digest"><h3>Organizing Software for Handwritten Notes | Summer 2017-Spring 2018</h3></a>
-				<ul>
-					<li>Created a piece of software that uses computer vision to help organize handwritten notes.</li>
-				</ul>
-				<a href="https://sourcesbot.com"><h3>Software to Find Similar News Articles | Summer 2017-Present</h3></a>
-				<ul>
-					<li>Writing software to identify multiple news reports on an event or topic when given one.</li>
-					<li>Uses Google's Natural Language API to tag news articles which are then matched with Elasticsearch</li>
-				</ul>
-			</article>
+		<main class="cardview-host">
+			<div class="card non-card split-card">
+				<img class="split-left fit-image" id="me" src="/img/crop.png"/>
+				<article id="about" class="split-right">
+					<p>
+						I am a Computer Science student at the University of California Santa Cruz who is interested in computer security.
+						I have worked on projects in the fields of data processing and internet security.
+						In my spare time I enjoy hiking, birdwatching, and trying to stay optimistic about the news.
+					</p>
+				</article>
+			</div>
+			<div id="upnp.home" class="card subtle-card split-card cartographer-lot">
+				<h2 class="title">Studying Attacks on UPNP Devices</h2>
+				<article class="split-left">
+					<p>
+						<!-- TODO: use the word honeypot -->
+						I am currently working on a piece of software that emulates vurnerable UPNP enabled router.
+						My goal is to eventually use this software to understand the current ways that UPNP devices are being attacked.
+					</p>
+					<p>
+						Currently the software emulates the UPNP device discovery protocol, SSDP.
+						Due to the inherit risks of an SSDP server being abused to carry out a reflected denial of service attack the system blocks repeated requests from the same ip over short periods of time.
+					</p>
+				</article>
+				<div class="split-right">
+					
+				</div>
+				<a class="cartographer-feedback button icon" href="https://cartographer.michaelbh.com/feedback/Z0FBQUFBQmNVVjlITEtKTWFKLU1za0ExT2Z0bEdxQ1ZOT2hGMUlJd0dzQ3hoUFItNXh6NG81RXFITjNlZ29FZk5fYkJLaXF2U2dzZEwtRGZMSXo5elFjMzFCNFRyeFNQTmsxWFg1Rm5kMnpTQUJIVS1xVDQ5ZjA9/media.home">Feedback</a>
+			</div>
+			<div id="security.home" class="card non-card split-card cartographer-lot">
+				<h2 class="title">Boosting Login Security</h2>
+				<article class="split-right">
+					<p>
+						In high school I wrote a piece of software that records and compares user behavior, enabling continuous authentication for web sites.
+						The system works by providing a data collection script to inject into pages and an API endpoint to return the trustworthiness of a user.
+						The system allows site owners to improve the security of their login systems without requiring users to buy hardware tokens or set up alternate means of authentication.
+					</p>
+					<button class="button button-minor" onclick="popover('about:blank');">Launch Demo</button>
+					<a class="button button-major cartographer-bridge cartographer-partner-bridge" href="https://michardy.github.io/account-hijacking-protection">Check out the project</a>
+				</article>
+				<img class="split-left fit-image" src="img/AHP_score+action.png"/>
+				<a class="cartographer-feedback button icon" href="https://cartographer.michaelbh.com/feedback/Z0FBQUFBQmNVVjlITEtKTWFKLU1za0ExT2Z0bEdxQ1ZOT2hGMUlJd0dzQ3hoUFItNXh6NG81RXFITjNlZ29FZk5fYkJLaXF2U2dzZEwtRGZMSXo5elFjMzFCNFRyeFNQTmsxWFg1Rm5kMnpTQUJIVS1xVDQ5ZjA9/security.home">Feedback</a>
+			</div>
+			<div id="cartographer.home" class="card blatant-card split-card cartographer-lot">
+				<h2 class="title">Analyzing this Site</h2>
+				<article class="split-left">
+					<p>
+						I am collecting data on how people interact with the site you are currently viewing.
+						This will enable me to better understand how this site is used and how to make it more useful.
+						I currently track how long people spend reading various sections and provide a feedback form.
+						This will allow me to identify the sections people want to learn more about. 
+					</p>
+				</article>
+				<div id="cartographer-map" class="split-right embed">
+					<div style="padding:4%;background-color:var(--light); color:var(--dark)">
+						<h3>Content could not be displayed</h3>
+						<p>This content is unavailable for one of the following reasons:</p>
+						<ul>
+							<li>You need to <a href="https://www.enable-javascript.com/">enable JavaScript</a></li>
+							<li>
+								It is unavailable because serving you this content might violate <a href="https://en.wikipedia.org/wiki/GDPR">GDPR</a>
+							</li>
+							<li>
+								It is unavailable due to Russian Federal Law No. 242-FZ (Requires me to buy servers in Russia)
+							</li>
+						</ul>
+						
+					</div>
+				</div>
+				<a class="cartographer-feedback button icon" href="https://cartographer.michaelbh.com/feedback/Z0FBQUFBQmNVVjlITEtKTWFKLU1za0ExT2Z0bEdxQ1ZOT2hGMUlJd0dzQ3hoUFItNXh6NG81RXFITjNlZ29FZk5fYkJLaXF2U2dzZEwtRGZMSXo5elFjMzFCNFRyeFNQTmsxWFg1Rm5kMnpTQUJIVS1xVDQ5ZjA9/cartographer.home">Feedback</a>
+			</div>
 		</main>
 		<footer>
 			<div>
-				&copy; 2017 Michael Hardy
+				&copy; 2018 Michael Hardy
 			</div>
 			<div>
 				Nimbus Mono is used under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt">GNU Public License v2.0</a>
 			</div>
+			<div>
+				Open Sans is used under the <a href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache License v2.0</a>
+			</div>
 		</footer>
 	</body>
+	<script src="//cdn.jsdelivr.net/gh/michardy/grid-ui@5/js/grid_window.js"></script>
+	<script src="//cartographer.michaelbh.com/js/cf.js"></script>
+	<script>
+		var pub = new Cartographer_Map.Publisher(
+			'cartographer-map',
+			'cartographer.home',
+			{
+				'media.home': 'Analyzing Media',
+				'security.home': 'Boosting Login Security',
+				'cartographer.home': 'Analyzing this Site'
+			}
+		);
+	</script>
 </html>
