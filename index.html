@@ -144,14 +144,16 @@
 	<script src="//cdn.jsdelivr.net/gh/michardy/grid-ui@5/js/grid_window.js"></script>
 	<script src="//cartographer.michaelbh.com/js/cf.js"></script>
 	<script>
-		var pub = new Cartographer_Map.Publisher(
-			'cartographer-map',
-			'cartographer.home',
-			{
-				'media.home': 'Analyzing Media',
-				'security.home': 'Boosting Login Security',
-				'cartographer.home': 'Analyzing this Site'
-			}
-		);
+		window.addEventListener("pageshow", function() {
+			var pub = new Cartographer_Map.Publisher(
+				'cartographer-map',
+				'cartographer.home',
+				{
+					'upnp.home': 'Studying UPNP Attacks',
+					'security.home': 'Boosting Login Security',
+					'cartographer.home': 'Analyzing this Site'
+				}
+			);
+		});
 	</script>
 </html>
