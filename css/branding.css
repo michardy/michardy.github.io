@@ -29,10 +29,6 @@
 	--title: var(--emphasis);
 	--header-text: var(--light);
 	--footer-text: var(--mid-dark);
-	--subtle-card: var(--mid-light);
-	--subtle-card-text: var(--light);
-	--blatant-card: var(--mid-dark);
-	--blatant-card-text: var(--light);
 	--pane: var(--mid-light);
 	--pane-border: var(--dark);
 	--pane-text: var(--light);
@@ -45,14 +41,17 @@
 	--tag: var(--emphasis);
 	--tag-border: var(--mid-light);
 	--tag-text: var(--light);
-	--button: var(--mid-light);
+	--button: var(--mid-dark);
 	--button-text: var(--light);
-	--button-major: var(--emphasis);
-	--button-major-text: var(--dark);
-	--button-minor: var(--mid-dark);
-	--button-minor-text: var(--light);
 	--embed: var(--light);
 	--embed-text: var(--dark);
+	--frame-base: var(--mid-light);
+	--frame-text: var(--light);
+	--frame-pane: var(--light);
+	--frame-pane-text: var(--dark);
+	--frame-pane-border: var(--dark);
+	--frame-deselect: var(--mid-dark);
+	--frame-deselect-text: var(--light);
 }
 
 @font-face{
