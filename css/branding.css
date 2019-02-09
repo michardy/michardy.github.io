@@ -86,6 +86,10 @@ header h1 {
 	color: var(--light);
 }
 
+.frame .pane a {
+	color: var(--link);
+}
+
 .mid-light a {
 	color: var(--light);
 }
