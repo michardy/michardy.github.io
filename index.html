@@ -5,7 +5,7 @@
 		<meta charset="utf-8"/>
 		<meta http-equiv="X-Frame-Options" content="deny">
 		<meta http-equiv="X-XSS-Protection" content="1; mode=block; report=https://cartographer.michaelbh.com/impassable">
-		<meta http-equiv="Content-Security-Policy" content="block-all-mixed-content; default-src https://michaelbh.com; script-src 'sha256-TRf82RwIYNrDsOp2S67qawaic76Po8TG0HU2eZwHw/0=' 'sha256-/c16uhS6YhVUUMx9i2vhXi+tOWtFDZkDn6Am1BVPdmY=' https://michaelbh.com https://cartographer.michaelbh.com/js/ https://cdn.jsdelivr.net/gh/michardy/; connect-src wss://cartographer.michaelbh.com; style-src https://michaelbh.com https://cdn.jsdelivr.net/gh/michardy/; frame-src https://michaelbh.com https://cartographer.michaelbh.com;">
+		<meta http-equiv="Content-Security-Policy" content="block-all-mixed-content; default-src https://michaelbh.com; script-src 'sha256-v7Eg+LcLWCE5A13gBC84k8h0rg0yThaRzh6mchs6tNg=' https://michaelbh.com https://cartographer.michaelbh.com/js/ https://cdn.jsdelivr.net/gh/michardy/; connect-src wss://cartographer.michaelbh.com; style-src https://michaelbh.com https://cdn.jsdelivr.net/gh/michardy/; frame-src https://michaelbh.com https://cartographer.michaelbh.com;">
 		<meta id="meta" name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<!--Fixes a wierd bug in the chrome dev tools-->
 		<meta name="viewport" content="width=device-width"/>
@@ -97,7 +97,7 @@
 						The system works by providing a data collection script to inject into pages and an API endpoint to return the trustworthiness of a user.
 						The system allows site owners to improve the security of their login systems without requiring users to buy hardware tokens or set up alternate means of authentication.
 					</p>
-					<button id="demo.security.home" class="button emphasis cartographer-app" onclick="popover('/keystroke_dynamics_demo.html');">Launch Demo</button>
+					<button id="demo.security.home" class="button emphasis cartographer-app">Launch Demo</button>
 					<a class="button cartographer-bridge cartographer-partner-bridge" href="https://michaelbh.com/account-hijacking-prevention/">Check out the project</a>
 				</article>
 				<img class="split-left fit-image" src="img/AHP_score+action.png"/>
@@ -158,5 +158,9 @@
 				}
 			);
 		});
+		function keystroke_dynamics() {
+			popover('/keystroke_dynamics_demo.html');
+		}
+		document.getElementById('demo.security.home').addEventListener("onclick", keystroke_dynamics)
 	</script>
 </html>
