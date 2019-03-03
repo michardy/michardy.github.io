@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-Frame-Options" content="deny">
+		<meta http-equiv="X-XSS-Protection" content="1; mode=block; report=https://cartographer.michaelbh.com/impassable">
+		<meta http-equiv="Content-Security-Policy" content="default-src https://michaelbh.com; script-src https://michaelbh.com; connect-src 'none'; style-src https://cdn.jsdelivr.net/gh/michardy/; frame-src 'none'; frame-ancestors https://michaelbh.com; report-uri https://cartographer.michaelbh.com/impassable; form-action https://us-central1-sunlit-vortex-222923.cloudfunctions.net/keystroke-dynamics-submit">
+		<meta id="meta" name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<!--Fixes a wierd bug in the chrome dev tools-->
+		<meta name="viewport" content="width=device-width"/>
+		<link rel="stylesheet" href="css/branding.css"/>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/michardy/grid-ui@6/css/basic.css">
+		<!--Please wait while I sacrafice a newborn goat to IE/Edge. (Edit: It still does not work)-->
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+		<title>Keystroke Dynamics Demo</title>
+	</head>
+	<body class="mid-light">
+		<main>
+			<div class="tabbar">
+					<input onclick="update_step(this);" id="trainselector" class="fatradio-button" type="radio" name="type" value="train" checked/>
+					<label for="trainselector">1: Train the Software</label>
+					<input onclick="update_step(this);" id ="testselector" class="fatradio-button" type="radio" name="type" value="test"/>
+					<label for="testselector">2: Test the Software</label>
+					<input onclick="update_step(this);" id ="submitselector" class="fatradio-button" type="radio" name="type" value="submit"/>
+					<label for="submitselector">3: Submit Data (Optional)</label>
+			</div>
+			<div class="pane">
+				<div id="monitor">
+					<p id="train">
+						This page will attempt to tell your typing apart from a friend's.
+						First help train the software to identify your typing by filling out the fields below.
+					</p>
+					<p id="test" style="display:none">
+						Now, either type into the system again or ask a friend to type into the system too see if it can tell you apart.
+					</p>
+					<p>
+						Don't worry about what you type too much, just don't button mash.
+						The prompts are only to give you ideas.
+						You can write anything in the boxes
+					</p>
+					<p>
+						The typing information collected by this page will not be sent anywhere without your permission.  
+					</p>
+					<label for="name">Your name:</label>
+					<input class="input" id="name" type="text">
+					<br/>
+					<label for="color">Your favorite color:</label>
+					<input class="input" id="color" type="text">
+					<br/>
+					<label for="fruit">Your favorite fruit:</label>
+					<input class="input" id="fruit" type="text">
+					<br/>
+					<br/>
+					<label for="breakfastcakes">Do you perfer pancakes or waffles? Why?</label>
+					<br/>
+					<textarea class="input" id="breakfastcakes"></textarea>
+					<br/>
+					<label for="language">What is your favorite language? Why?</label>
+					<br/>
+					<textarea class="input" id="language"></textarea>
+					<br/>
+					<label for="completion">Completion:</label>
+					<progress class="mid-dark" value="0" max="100" id="completion"></progress>
+				</div>
+				<form method="POST" action="https://us-central1-sunlit-vortex-222923.cloudfunctions.net/keystroke-dynamics-submit" id="submit" style="display:none">
+					<h2>That was probably<span id="not"> not</span> one person</h2>
+					<div>Match score: <span id="score"></span> out of 100</div>
+					<p>
+						You can submit the data generated to help improve the system.
+						You can also go back and start the program again.
+					</p>
+					<input id="1person" type="radio" name="num_sources" value="1">
+					<label for="1person">This data is from one person</label>
+					<br/>
+					<input id="2people" type="radio" name="num_sources" value="2">
+					<label for="2people">This data is from two people</label>
+					<br/>
+					<script>
+						function edit(element) {
+							let inputs = element.parentElement.parentElement.getElementsByTagName('input');
+							console.log(inputs);
+							inputs[0].focus();
+							inputs[0].select();
+						}
+						function hash(element) {
+							let value = element.value;
+							let hash = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(value));
+							element.parentElement.getElementsByClassName('enrichableoutput')[0].getElementsByTagName('input')[0].value = hash;
+							console.log('test');
+						}
+					</script>
+					<style>
+						.enrichableinput > input {
+							position: absolute;
+							z-index: 0;
+						}
+						.enrichableinput > input:focus {
+							position: absolute;
+							z-index: 2;
+						}
+						.enrichableinput > input:placeholder-shown {
+							position: absolute;
+							z-index: 2;
+						}
+						.enrichableoutput > input {
+							position: absolute;
+							z-index: 1;
+						}
+						.enrichableinput input {
+							padding: 1%;
+							margin-left: 1%;
+						}
+						.enrichableinput {
+							padding: 1%;
+						}
+					</style>
+					<br/>
+					<label for="email">Optional: provide your email address to help me identify multiple submissions from the same person (It will be hashed before submission):</label>
+					<div class="enrichableinput">
+						<input id="email" type="email" placeholder="email" class="hashedemail" onchange="hash(this);">
+						<span class="enrichableoutput" placeholder="hash">
+							<input type="text" onclick="edit(this);" name="id">
+						</span>
+					</div>
+					<br/>
+					<br/>
+					<input id="traindata" type="hidden" name="train">
+					<input id="testdata" type="hidden" name="test">
+					<input type="checkbox" id="biometricconsent" name="biometricconsent">
+					<label for="biometricconsent">I understand that by submitting this data I am providing biometric data that can potentially be used to identify me.</label>
+					<br/>
+					<button>Submit</button>
+				</div>
+			</div>
+		</main>
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/sjcl@1/sjcl.min.js"></script>
+	<script>
+		var state = 'train';
+		var keyDynKeys = [];
+		var training_data = {};
+		var test_data = {};
+		var completion = document.getElementById('completion');
+		var monitor = document.getElementById('monitor');
+		var submit = document.getElementById('submit');
+		var trainsel = document.getElementById('trainselector');
+		var testsel = document.getElementById('testselector');
+		var subsel = document.getElementById('submitselector');
+		function update_step(target) {
+			let elements = document.getElementsByClassName('input');
+			for (let e of elements) {
+				e.value = '';
+			}
+			if (target.value == 'train') {
+				keyDynKeys = [];
+				monitor.style.display = "block";
+				submit.style.display = "none";
+				let train = document.getElementById('train');
+				train.style.display = "inline";
+				let test = document.getElementById('test');
+				test.style.display = "none";
+				state = 'train';
+			} else if (target.value == 'test') {
+				if ((!(Object.keys(training_data).length === 0)) && training_data.constructor === Object) {
+					keyDynKeys = [];
+					monitor.style.display = "block";
+					submit.style.display = "none";
+					let train = document.getElementById('train');
+					train.style.display = "none";
+					let test = document.getElementById('test');
+					test.style.display = "inline";
+					state = 'test';
+				} else {
+					alert('You need to train the system first');
+					trainsel.click();
+				}
+			} else if (target.value == 'submit') {
+				if ((!(Object.keys(test_data).length === 0)) && test_data.constructor === Object) {
+					monitor.style.display = "none";
+					submit.style.display = "block";
+					state = 'submit';
+					let score = compare();
+					if (score > 0.5) {
+						document.getElementById('not').style.display = "none";
+					} else {
+						document.getElementById('not').style.display = "inline";
+					}
+					document.getElementById('score').textContent = score * 100;
+					document.getElementById('traindata').value = JSON.stringify(training_data);
+					document.getElementById('testdata').value = JSON.stringify(test_data);
+				} else {
+					alert('You need to test the system first');
+					testsel.click();
+				}
+			}
+		}
+		function compare() {
+			diffs = [];
+			function sum(total, input) {
+				return(total + input);
+			}
+			for (let pair in test_data) {
+				if (pair in training_data) {
+					diffs.push(Math.abs(test_data[pair] - training_data[pair]) - 24 ); // 24 is magic constant found in implimentation
+				}
+			}
+			let avg = diffs.reduce(sum)/diffs.length;
+			let score = 4.8 - avg; // 4.8 milliseconds
+			if (score > 4.8) {
+				return(1);
+			} else if (score < 0) {
+				return(0);
+			} else {
+				return(score/4.8);
+			}
+		}
+		function keyDynAverage(arr){
+			let tot = 0;
+			let valPoints = 0;
+			for (let n = 0; n < arr.length; n++){
+				if (arr[n] < 100){
+					valPoints += 1;
+					tot += arr[n];
+				}
+			}
+			return(tot/arr.length);
+		}
+		function keyDynCB(){
+			//sort & calculate diffs
+			let measurements = {};
+			for (var i = 0; i < keyDynKeys.length; i++){
+				if (keyDynKeys[i].length !== 1){
+					if (keyDynKeys[i][0][0]+'.'+keyDynKeys[i][1][0] in measurements){
+						measurements[keyDynKeys[i][0][0]+'.'+keyDynKeys[i][1][0]].push(keyDynKeys[i][1][1]-keyDynKeys[i][0][1]);
+					} else {
+						measurements[keyDynKeys[i][0][0]+'.'+keyDynKeys[i][1][0]] = [keyDynKeys[i][1][1]-keyDynKeys[i][0][1]];
+					}
+				}
+			}
+			// average the diffs, alphabetize, (& remove outliers?)
+			let diffs = {};
+			for (var i = 0; i < Object.keys(measurements).length; i++){
+				var kc = Object.keys(measurements).sort()[i];
+				diffs[kc] = keyDynAverage(measurements[kc]);
+			}
+			console.log('state change');
+			console.log(state);
+			if (state === 'train') {
+				training_data = diffs;
+				testsel.click();
+			} else if (state === 'test') {
+				test_data = diffs;
+				subsel.click();
+			}
+		}
+		function keyDynUP(e){
+			keyDynKeys.push([[e.keyCode, Date.now()]])
+			if (keyDynKeys.length > 100){
+				keyDynCB();
+			}
+			completion.value = keyDynKeys.length;
+		}
+		function keyDynDW(e){
+			if (keyDynKeys.length !== 0){
+				keyDynKeys[keyDynKeys.length-1].push([e.keyCode, Date.now()]);
+			}
+		}
+		monitor.addEventListener('keydown', keyDynDW, false);
+		monitor.addEventListener('keyup', keyDynUP, false);
+	</script>
+</html>
