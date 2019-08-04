@@ -56,11 +56,13 @@
 
 @font-face{
 	font-family: 'nimbusmono';
+	font-display: swap;
 	src: url('/font/nimbusmono-regular-webfont.woff');
 }
 
 @font-face{
 	font-family: 'opensans';
+	font-display: swap;
 	src: url('/font/OpenSans-Regular-webfont.woff');
 }
 
