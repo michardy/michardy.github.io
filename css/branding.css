@@ -93,3 +93,7 @@ header h1 {
 .mid-light a {
 	color: var(--light);
 }
+
+.navbar {
+	font-family: opensans
+}
