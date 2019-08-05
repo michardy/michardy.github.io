@@ -61,6 +61,13 @@
 }
 
 @font-face{
+	font-family: 'sans';
+	font-display: swap;
+	src: url('/font/OpenSans-Regular-webfont.woff');
+}
+
+/* TODO: fix cartographer-map and remove this*/
+@font-face{
 	font-family: 'opensans';
 	font-display: swap;
 	src: url('/font/OpenSans-Regular-webfont.woff');
@@ -97,5 +104,5 @@ header h1 {
 }
 
 .navbar {
-	font-family: opensans
+	font-family: sans;
 }
