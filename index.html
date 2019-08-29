@@ -48,7 +48,8 @@
 		<!--And now for the actual standard that everyone seems to need their own version of (Facebook, Twitter, Google):-->
 		<title>Michael Hardy</title>
 		<meta name="author" content="Michael Hardy">
-		<meta name="description" content="My resume and projects"/>
+		<meta name="description" content="My resume and projects">
+		<meta name="cartographer-map-id" content="home$0@portfolio$0">
 	</head>
 	<body class="cardview-page">
 		<div class="card mid-light popover" id="popover"></div>
@@ -150,11 +151,11 @@
 		window.addEventListener("pageshow", function() {
 			var pub = new Cartographer_Map.Publisher(
 				'cartographer-map',
-				'cartographer.home',
+				'cartographer',
 				{
-					'upnp.home': 'Studying UPNP Attacks',
-					'security.home': 'Boosting Login Security',
-					'cartographer.home': 'Analyzing this Site'
+					'upnp': 'Studying UPNP Attacks',
+					'accountsecurity': 'Boosting Login Security',
+					'cartographer': 'Analyzing this Site'
 				}
 			);
 		});
