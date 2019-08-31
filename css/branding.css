@@ -106,3 +106,7 @@ header h1 {
 .navbar {
 	font-family: sans;
 }
+
+pre {
+	font-family: 'nimbusmono', monospace;
+}
