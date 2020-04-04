@@ -110,3 +110,11 @@ header h1 {
 body {
 	font-family: sans;
 }
+
+.mid-dark h2 a {
+	color: var(--light);
+}
+
+pre {
+	overflow-x: scroll;
+}
