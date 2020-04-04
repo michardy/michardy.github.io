@@ -118,3 +118,7 @@ body {
 pre {
 	overflow-x: scroll;
 }
+
+#visualization {
+	height: 50vh;
+}
