@@ -1,0 +1,5 @@
+Usage of the Rust logo is controlled by the Rust
+media guide and the Mozilla trademark policy
+
+https://www.rust-lang.org/policies/media-guide
+https://www.mozilla.org/en-US/foundation/trademarks/policy/
