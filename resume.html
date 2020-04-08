@@ -5,7 +5,7 @@
 		<meta charset="utf-8"/>
 		<meta http-equiv="X-Frame-Options" content="deny">
 		<meta http-equiv="X-XSS-Protection" content="1; mode=block; report=https://cartographer.michaelbh.com/impassable">
-		<meta http-equiv="Content-Security-Policy" content="block-all-mixed-content; default-src https://michaelbh.com; script-src 'sha256-TRf82RwIYNrDsOp2S67qawaic76Po8TG0HU2eZwHw/0=' https://michaelbh.com https://cartographer.michaelbh.com/js/ https://cdn.jsdelivr.net/gh/michardy/; connect-src wss://cartographer.michaelbh.com https://cartographer.michaelbh.com; style-src https://michaelbh.com https://cdn.jsdelivr.net/gh/michardy/ https://cartographer.michaelbh.com; frame-src https://michaelbh.com https://cartographer.michaelbh.com; img-src https://michaelbh.com https://mhardy.dev;">
+		<meta http-equiv="Content-Security-Policy" content="block-all-mixed-content; default-src https://michaelbh.com; script-src https://michaelbh.com https://cartographer.michaelbh.com/js/ https://cdn.jsdelivr.net/gh/michardy/; connect-src wss://cartographer.michaelbh.com https://cartographer.michaelbh.com; style-src https://michaelbh.com https://cdn.jsdelivr.net/gh/michardy/ https://cartographer.michaelbh.com/terraform/css/; frame-src https://cartographer.michaelbh.com; img-src https://michaelbh.com https://mhardy.dev;">
 		<meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0" />
 		<link rel="stylesheet" href="css/branding.css"/>
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/michardy/grid-ui@6/css/grid_window.min.css">
@@ -52,21 +52,21 @@
 	</head>
 	<body class="article-page">
 		<header>
-			<h1><a href="/">Michael Hardy</a></h1>
-			<a class="navbar" href="/blog/">Blog</a>&nbsp;
-			<a class="navbar cartographer-bridge" href="https://github.com/michardy">GitHub</a>&nbsp;
-			<a class="navbar cartographer-bridge" href="https://www.linkedin.com/in/michael-hardy-b6143a168/">LinkedIn</a>&nbsp;
-			<a class="navbar" href="resume.html">Resume</a>&nbsp;
-			<a class="navbar cartographer-feedback" href="https://cartographer.michaelbh.com/contact/portfolio$0">Contact</a>&nbsp;
-			<a class="navbar" href="privacy.html">Privacy Policy</a>&nbsp;
+			<h1><a href="/">Michael&nbsp;Hardy</a></h1>
+			<a class="navbar" href="/blog/">Blog</a>&ensp;
+			<a class="navbar cartographer-bridge" href="https://github.com/michardy">GitHub</a>&ensp;
+			<a class="navbar cartographer-bridge" href="https://www.linkedin.com/in/michael-hardy-b6143a168/">LinkedIn</a>&ensp;
+			<a class="navbar" href="resume.html">Resume</a>&ensp;
+			<a class="navbar cartographer-feedback" href="https://cartographer.michaelbh.com/contact/portfolio$0">Contact</a>&ensp;
+			<a class="navbar" href="privacy.html">Privacy&nbsp;Policy</a>&ensp;
 		</header>
 		<main>
 			<div class="card mid-light popover" id="popover"></div>
 			<article id="skills" class="cartographer-lot" data-display="true" data-version="0">
 				<h2>Skills &amp; Abilities</h2>
 				<ul>
-					<li>Languages: Python (8 years of experience), Rust, C/C++, HTML, JavaScript, and CSS</li>
-					<li>Tools: Git, Travis CI, Appveyor, Elasticsearch, Spark, GraphX</li>
+					<li>Languages: Python (8 years of experience), Rust, Java, C, HTML/JavaScript/CSS</li>
+					<li>Tools: Git, Travis CI, Elasticsearch, Spark, GraphX</li>
 					<li>Systems: Windows, Linux (Debian, Ubuntu, and Arch)</li>
 				</ul>
 			</article>
@@ -74,7 +74,7 @@
 				<h2>Experience</h2>
 				<h3>Engineering Intern | 8x8 | Summer 2019</h3>
 				<ul>
-					<li>Experimented with implementing analytics systems on graphs with GraphX</li>
+					<li>Experimented with implementing analytics systems on graphs</li>
 				</ul>
 				<h3>Engineering Intern | 8x8 | Summer 2018</h3>
 				<ul>
@@ -96,7 +96,7 @@
 			</article>
 			<article id="projects" class="cartographer-lot" data-display="true" data-version="0">
 				<h2>Projects</h2>
-				<h3>Software to Find Similar News Articles | Summer 2017-Winter 2018</h3>
+				<a class="cartographer-bridge" href="https://github.com/michardy/sources-bot"><h3>Software to Find Similar News Articles | Summer 2017-Winter 2018</h3></a>
 				<ul>
 					<li>I wrote software that can identify multiple news reports on a given event or topic when given one.</li>
 					<li>Software uses Google's Natural Language API to tag news articles which are then matched with one another using Elasticsearch</li>
@@ -104,10 +104,6 @@
 				<a  class="cartographer-bridge" href="https://github.com/michardy/note-digest"><h3>Software for Organizing Handwritten Notes | Summer 2017-Spring 2018</h3></a>
 				<ul>
 					<li>Created a piece of software that uses computer vision to help organize handwritten notes.</li>
-				</ul>
-				<h3>Auto Configuration Software | Spring 2016</h3>
-				<ul>
-					<li>Designed software for Technology Assistants to expedite setup of school laptops.</li>
 				</ul>
 				<h3>Computer Vision Experiments | Spring 2015-Summer 2016</h3>
 				<ul>
